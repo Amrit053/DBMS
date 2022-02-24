@@ -1,0 +1,151 @@
+SQL> select * from emp;
+
+    EMP_NO EMP_NAME                       JOB                                   
+---------- ------------------------------ ------------------------------        
+   DEPT_NO        SAL DEPT_NAME                                                 
+---------- ---------- ------------------------------                            
+       103 Sachin                         AP                                    
+        20       1800 MECH                                                      
+                                                                                
+       106 freddy                                                               
+        10       5000 CSE                                                       
+                                                                                
+
+SQL> create table emp2(emp_no number(6),emp_name varchar2(30),job varchar2(30),dept_no number(6),sal number(6),dept_name varchar2(30));
+
+Table created.
+
+SQL> Insert into emp2 values (100,'ashutosh','ASP',10,1700,'CSE');
+
+1 row created.
+
+SQL> insert into emp2 values (101,'amrit','AP',20,1500,'CSE');
+
+1 row created.
+
+SQL> insert into emp2 values (102,'Vidhi','ASP',10,2500,'CSE');
+
+1 row created.
+
+SQL> insert into emp2 values (103,'Sachin','AP',20,1800,'MECH');
+
+1 row created.
+
+SQL> insert into emp2 values (104,'Parma','ASP',10,1700,'CSE');
+
+1 row created.
+
+SQL> select * from emp2;
+
+    EMP_NO EMP_NAME                       JOB                                   
+---------- ------------------------------ ------------------------------        
+   DEPT_NO        SAL DEPT_NAME                                                 
+---------- ---------- ------------------------------                            
+       100 ashutosh                       ASP                                   
+        10       1700 CSE                                                       
+                                                                                
+       101 amrit                          AP                                    
+        20       1500 CSE                                                       
+                                                                                
+       102 Vidhi                          ASP                                   
+        10       2500 CSE                                                       
+                                                                                
+
+    EMP_NO EMP_NAME                       JOB                                   
+---------- ------------------------------ ------------------------------        
+   DEPT_NO        SAL DEPT_NAME                                                 
+---------- ---------- ------------------------------                            
+       103 Sachin                         AP                                    
+        20       1800 MECH                                                      
+                                                                                
+       104 Parma                          ASP                                   
+        10       1700 CSE                                                       
+                                                                                
+
+SQL> create view empview as select * from emp2 where job='ASP';
+create view empview as select * from emp2 where job='ASP'
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create view emp2view as select * from emp2 where job='ASP';
+
+View created.
+
+SQL> select *from emp2view;
+
+    EMP_NO EMP_NAME                       JOB                                   
+---------- ------------------------------ ------------------------------        
+   DEPT_NO        SAL DEPT_NAME                                                 
+---------- ---------- ------------------------------                            
+       100 ashutosh                       ASP                                   
+        10       1700 CSE                                                       
+                                                                                
+       102 Vidhi                          ASP                                   
+        10       2500 CSE                                                       
+                                                                                
+       104 Parma                          ASP                                   
+        10       1700 CSE                                                       
+                                                                                
+
+SQL> create view empview1 as select emp_no,dept_no,emp_name,sal,dept_name from
+  2    2  emp;
+  2  emp
+  *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> create view empview2 as select emp_no,dept_no,emp_name,sal,dept_name from emp2;
+
+View created.
+
+SQL> select *from empview2;
+
+    EMP_NO    DEPT_NO EMP_NAME                              SAL                 
+---------- ---------- ------------------------------ ----------                 
+DEPT_NAME                                                                       
+------------------------------                                                  
+       100         10 ashutosh                             1700                 
+CSE                                                                             
+                                                                                
+       101         20 amrit                                1500                 
+CSE                                                                             
+                                                                                
+       102         10 Vidhi                                2500                 
+CSE                                                                             
+                                                                                
+
+    EMP_NO    DEPT_NO EMP_NAME                              SAL                 
+---------- ---------- ------------------------------ ----------                 
+DEPT_NAME                                                                       
+------------------------------                                                  
+       103         20 Sachin                               1800                 
+MECH                                                                            
+                                                                                
+       104         10 Parma                                1700                 
+CSE                                                                             
+                                                                                
+
+SQL> delete from empview2 where dept_no='10';
+
+3 rows deleted.
+
+SQL> Insert into empview2 values(106,10,'freddy',5000,'CSE');
+
+1 row created.
+
+SQL> update empview2 set emp_name='sona' where emp_no='101';
+
+1 row updated.
+
+SQL> delete empview2 where emp_name='sona';
+
+1 row deleted.
+
+SQL> drop view empview2;
+
+View dropped.
+
+SQL> spool off;

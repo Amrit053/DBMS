@@ -1,0 +1,121 @@
+SQL> create table employee(Id int, F_Name char(20), L_name char(20), Salary int );
+
+Table created.
+
+SQL> insert into employee values(1,'a', 'a', 500);
+
+1 row created.
+
+SQL>  insert into employee values(1,'Amrit', 'Aanand', 800);
+
+1 row created.
+
+SQL> insert into employee values(1,'Rakesh', 'Mehra', 500);
+
+1 row created.
+
+SQL>  insert into employee values(1,'Rahuk', 'Patel', 300);
+
+1 row created.
+
+SQL> select * from employee;
+
+        ID F_NAME               L_NAME                   SALARY                 
+---------- -------------------- -------------------- ----------                 
+         1 a                    a                           500                 
+         1 Amrit                Aanand                      800                 
+         1 Rakesh               Mehra                       500                 
+         1 Rahuk                Patel                       300                 
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into employee values(6,'Lokesh','Singh',199);
+
+1 row created.
+
+SQL> select *from employee;
+
+        ID F_NAME               L_NAME                   SALARY                 
+---------- -------------------- -------------------- ----------                 
+         1 a                    a                           500                 
+         1 Amrit                Aanand                      800                 
+         1 Rakesh               Mehra                       500                 
+         1 Rahuk                Patel                       300                 
+         6 Lokesh               Singh                       199                 
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select *from employee;
+
+        ID F_NAME               L_NAME                   SALARY                 
+---------- -------------------- -------------------- ----------                 
+         1 a                    a                           500                 
+         1 Amrit                Aanand                      800                 
+         1 Rakesh               Mehra                       500                 
+         1 Rahuk                Patel                       300                 
+
+SQL> insert into employee values(9,'Mukesh','Yadaw',999);
+
+1 row created.
+
+SQL> savepoint s1;
+
+Savepoint created.
+
+SQL> insert into employee values(6,'Lokesh','Singh',199);
+
+1 row created.
+
+SQL> rollback to s1;
+
+Rollback complete.
+
+SQL> select *from employee;
+
+        ID F_NAME               L_NAME                   SALARY                 
+---------- -------------------- -------------------- ----------                 
+         1 a                    a                           500                 
+         1 Amrit                Aanand                      800                 
+         1 Rakesh               Mehra                       500                 
+         1 Rahuk                Patel                       300                 
+         9 Mukesh               Yadaw                       999                 
+
+SQL> savepoint s2;
+
+Savepoint created.
+
+SQL> delete from employee;
+
+5 rows deleted.
+
+SQL> select *from employee;
+
+no rows selected
+
+SQL> rollback to s2;
+
+Rollback complete.
+
+SQL> select * from employee;
+
+        ID F_NAME               L_NAME                   SALARY                 
+---------- -------------------- -------------------- ----------                 
+         1 a                    a                           500                 
+         1 Amrit                Aanand                      800                 
+         1 Rakesh               Mehra                       500                 
+         1 Rahuk                Patel                       300                 
+         9 Mukesh               Yadaw                       999                 
+
+SQL> spool off;
+
+
+//Basic Command for Grant and Revoke
+
+GRANT privileges_names ON object TO user;
+
+REVOKE privileges ON object FROM user;
+

@@ -1,0 +1,104 @@
+SQL> create table student3(regno number(10),name varchar2(20));
+create table student3(regno number(10),name varchar2(20))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table student4(regno number(10),name varchar2(20));
+
+Table created.
+
+SQL> alter table student3 add(dob date);
+alter table student3 add(dob date)
+                         *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+SQL> alter table student4 add(dob date);
+
+Table altered.
+
+SQL> insert into student4 values(12345,'amrit','05_mar_2002');
+
+1 row created.
+
+SQL> insert into student4 values(13245,'ravi','21_feb_2001');
+
+1 row created.
+
+SQL> insert into student4 values(13245,'sanar','21_aug_2002');
+
+1 row created.
+
+SQL> insert into student4 values(21564,'arjun','21_jan_2003');
+
+1 row created.
+
+SQL> select *from student4 order by dob;
+
+     REGNO NAME                 DOB                                             
+---------- -------------------- ---------                                       
+     13245 ravi                 21-FEB-01                                       
+     12345 amrit                05-MAR-02                                       
+     13245 sanar                21-AUG-02                                       
+     21564 arjun                21-JAN-03                                       
+
+SQL> select distinct name from student4;
+
+NAME                                                                            
+--------------------                                                            
+sanar                                                                           
+arjun                                                                           
+amrit                                                                           
+ravi                                                                            
+
+SQL> SELECT DISTINCT dob from student4;
+
+DOB                                                                             
+---------                                                                       
+21-FEB-01                                                                       
+05-MAR-02                                                                       
+21-JAN-03                                                                       
+21-AUG-02                                                                       
+
+SQL> SELECT *FROM student4 WHERE regno IN('13245');
+
+     REGNO NAME                 DOB                                             
+---------- -------------------- ---------                                       
+     13245 ravi                 21-FEB-01                                       
+     13245 sanar                21-AUG-02                                       
+
+SQL> SELECT *FROM student4 WHERE dob BETWEEN '01_jan_2001' AND '31_mar_2002';
+
+     REGNO NAME                 DOB                                             
+---------- -------------------- ---------                                       
+     12345 amrit                05-MAR-02                                       
+     13245 ravi                 21-FEB-01                                       
+
+SQL> SELECT *FROM student4 WHERE name LIKE 'a%';
+
+     REGNO NAME                 DOB                                             
+---------- -------------------- ---------                                       
+     12345 amrit                05-MAR-02                                       
+     21564 arjun                21-JAN-03                                       
+
+SQL> SELECT *FROM student4 WHERE name LIKE '%a%';
+
+     REGNO NAME                 DOB                                             
+---------- -------------------- ---------                                       
+     12345 amrit                05-MAR-02                                       
+     13245 ravi                 21-FEB-01                                       
+     13245 sanar                21-AUG-02                                       
+     21564 arjun                21-JAN-03                                       
+
+SQL> SELECT regno,SUM(regno) FROM student4 GROUP BY regno HAVING SUM(regno)>11111;
+
+     REGNO SUM(REGNO)                                                           
+---------- ----------                                                           
+     12345      12345                                                           
+     21564      21564                                                           
+     13245      26490                                                           
+
+SQL> spool off

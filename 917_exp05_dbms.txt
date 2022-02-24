@@ -1,0 +1,146 @@
+SQL> select * from dual;
+
+D                                                                               
+-                                                                               
+X                                                                               
+
+SQL> select UPPER(' hi aa')from dual;
+
+UPPER(                                                                          
+------                                                                          
+ HI AA                                                                          
+
+SQL> select LOWER(' HI AMRIT')from dual;
+
+LOWER('HI                                                                       
+---------                                                                       
+ hi amrit                                                                       
+
+SQL> select LOWER(' HI AMRIt')from dual;
+
+LOWER('HI                                                                       
+---------                                                                       
+ hi amrit                                                                       
+
+SQL> select ltrim('    HI AA  ')from dual;
+
+LTRIM('                                                                         
+-------                                                                         
+HI AA                                                                           
+
+SQL> select concat('Hello ', 'AA')from dual;
+
+CONCAT('                                                                        
+--------                                                                        
+Hello AA                                                                        
+
+SQL> select length('Hello')from dual;
+
+LENGTH('HELLO')                                                                 
+---------------                                                                 
+              5                                                                 
+
+SQL> Select replace('HI AA','HI','HELLO') from dual;
+
+REPLACE(                                                                        
+--------                                                                        
+HELLO AA                                                                        
+
+SQL> select substr('Hello Amrit Aanand',3,9)from dual;
+
+SUBSTR('H                                                                       
+---------                                                                       
+llo Amrit                                                                       
+
+SQL> select lpad('HI AA',4,'#')from dual;
+
+LPAD                                                                            
+----                                                                            
+HI A                                                                            
+
+SQL> select lpad('HI AA',3,'#')from dual;
+
+LPA                                                                             
+---                                                                             
+HI                                                                              
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+09-FEB-22                                                                       
+
+SQL> select round(29.76) from dual;
+
+ROUND(29.76)                                                                    
+------------                                                                    
+          30                                                                    
+
+SQL> select add_months(sysdate,6) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+09-AUG-22                                                                       
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+28-FEB-22                                                                       
+
+SQL> select round(29.76) from dual;
+
+ROUND(29.76)                                                                    
+------------                                                                    
+          30                                                                    
+
+SQL> select ceil(32.76) from dual;
+
+CEIL(32.76)                                                                     
+-----------                                                                     
+         33                                                                     
+
+SQL> select trunc(29.76232) from dual;
+
+TRUNC(29.76232)                                                                 
+---------------                                                                 
+             29                                                                 
+
+SQL> select floor(29.76) from dual;
+
+FLOOR(29.76)                                                                    
+------------                                                                    
+          29                                                                    
+
+SQL> select floor(29.32) from dual;
+
+FLOOR(29.32)                                                                    
+------------                                                                    
+          29                                                                    
+
+SQL> select abs(-90) from dual;
+
+  ABS(-90)                                                                      
+----------                                                                      
+        90                                                                      
+
+SQL> select power(2,3) from dual;
+
+POWER(2,3)                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select sqrt(27) from dual;
+
+  SQRT(27)                                                                      
+----------                                                                      
+5.19615242                                                                      
+
+SQL> 
+SQL> select tan(45) from dual;
+
+   TAN(45)                                                                      
+----------                                                                      
+1.61977519                                                                      
+
+SQL> spool off;
