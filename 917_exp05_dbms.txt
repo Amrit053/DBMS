@@ -1,3 +1,5 @@
+//Built In Functions//
+
 SQL> select * from dual;
 
 D                                                                               
