@@ -1,3 +1,4 @@
+//OPERATIONS//
 SQL> select * from emp;
 
     EMP_NO EMP_NAME                       JOB                                   
