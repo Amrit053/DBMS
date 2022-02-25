@@ -1,3 +1,5 @@
+//BASIC SELECT STATEMENTS//
+
 SQL> create table student3(regno number(10),name varchar2(20));
 create table student3(regno number(10),name varchar2(20))
              *
