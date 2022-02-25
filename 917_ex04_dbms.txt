@@ -1,3 +1,5 @@
+//SQL DCL and TCL Commands//
+
 SQL> create table employee(Id int, F_Name char(20), L_name char(20), Salary int );
 
 Table created.
